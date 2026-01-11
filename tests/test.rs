@@ -1,4 +1,4 @@
-use yes_or_no::boolean_enum;
+use bool_enum::boolean_enum;
 
 boolean_enum!(NoVis);
 boolean_enum!(pub(crate) PubCrate);
