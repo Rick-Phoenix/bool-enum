@@ -10,7 +10,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
- "syn-utils",
 ]
 
 [[package]]
@@ -46,15 +45,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
-]
-
-[[package]]
-name = "syn-utils"
-version = "0.3.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]

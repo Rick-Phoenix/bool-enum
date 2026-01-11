@@ -2,14 +2,18 @@
 name = "bool-enum"
 version = "0.1.0"
 edition = "2024"
+repository = "https://github.com/Rick-Phoenix/bool-enum"
+keywords = ["boolean", "enums"]
+description = "A proc macro that generates a Yes/No enum that dereferences to a boolean"
+license = "Apache-2.0"
+
+readme = true
 
 [lib]
 proc-macro = true
-
 
 [dependencies]
 proc-macro2 = "1.0"
 quote = "1.0"
 syn = { version = "2", features = ["extra-traits", "full"] }
-syn-utils = { path = "../syn-utils/" }
 paste = "1"
