@@ -17,9 +17,19 @@ macro_rules! test_bool_enum {
       $(
         #[test]
         fn [< $ident:snake >]() {
-          let bool = $ident::No;
+          let mut bool = $ident::No;
 
           if *bool {
+            panic!()
+          }
+
+          if !*(bool.inverted()) {
+            panic!()
+          }
+
+          bool.invert();
+
+          if !*bool {
             panic!()
           }
         }
