@@ -1,13 +1,13 @@
-use bool_enum::boolean_enum;
+use bool_enum::{BooleanEnum, bool_enum};
 
-boolean_enum!(NoVis);
-boolean_enum!(pub(crate) PubCrate);
-boolean_enum!(pub Public);
+bool_enum!(NoVis);
+bool_enum!(pub(crate) PubCrate);
+bool_enum!(pub Public);
 
 mod pub_super {
   use super::*;
 
-  boolean_enum!(pub(super) PubSuper);
+  bool_enum!(pub(super) PubSuper);
 }
 use pub_super::*;
 
@@ -20,17 +20,17 @@ macro_rules! test_bool_enum {
           let mut bool = $ident::No;
 
           if *bool {
-            panic!()
+            panic!("standard deref failed")
           }
 
           if !*(bool.inverted()) {
-            panic!()
+            panic!("inverted call failed")
           }
 
           bool.invert();
 
           if !*bool {
-            panic!()
+            panic!("invert call failed")
           }
         }
       )*

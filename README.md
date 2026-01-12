@@ -1,15 +1,15 @@
-Proc macro which generates an enum with Yes/No variants and a `Deref<bool>` impl (as well as From/Into `bool`, and the usual `Default, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display`).
+Proc macro which generates an enum with Yes/No variants and a `Deref<bool>` impl (as well as From/Into `bool`, and the usual `Default, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display`), along with some utility methods and a trait that uses them, to enable usage with generics.
 
 ## Usage
 
 Call the macro with visibility (optional) and ident.
 
 ```rust
-use bool_enum::boolean_enum;
+use bool_enum::{bool_enum, BooleanEnum};
 
-boolean_enum!(NoVis);
-boolean_enum!(pub(crate) PubCrate);
-boolean_enum!(pub Public);
+bool_enum!(NoVis);
+bool_enum!(pub(crate) PubCrate);
+bool_enum!(pub Public);
 
 fn main() {
     let mut bool = Public::No;
