@@ -60,6 +60,13 @@ pub fn boolean_enum(input: TokenStream) -> TokenStream {
       }
     }
 
+    impl Default for #ident {
+      #[inline]
+      fn default() -> Self {
+        Self::No
+      }
+    }
+
     impl From<#ident> for bool {
       #[inline]
       fn from(value: #ident) -> Self {

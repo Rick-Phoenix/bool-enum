@@ -1,4 +1,4 @@
-Proc macro which generates an enum with Yes/No variants and a `Deref<bool>` impl (as well as From/Into `bool`, and the usual `Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display`).
+Proc macro which generates an enum with Yes/No variants and a `Deref<bool>` impl (as well as From/Into `bool`, and the usual `Default, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Display`).
 
 ## Usage
 
