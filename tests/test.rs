@@ -1,4 +1,4 @@
-use bool_enum::{BooleanEnum, bool_enum};
+use bool_enum::bool_enum;
 
 bool_enum!(NoVis);
 bool_enum!(pub(crate) PubCrate);
@@ -6,7 +6,6 @@ bool_enum!(pub Public);
 
 mod pub_super {
   use super::*;
-
   bool_enum!(pub(super) PubSuper);
 }
 use pub_super::*;
@@ -17,21 +16,38 @@ macro_rules! test_bool_enum {
       $(
         #[test]
         fn [< $ident:snake >]() {
-          let mut bool = $ident::No;
+          let yes = $ident::Yes;
+          let no = $ident::No;
 
-          if *bool {
-            panic!("standard deref failed")
-          }
+          if *no { panic!("Default/No should deref to false") }
+          if !*yes { panic!("Yes should deref to true") }
 
-          if !*(bool.inverted()) {
-            panic!("inverted call failed")
-          }
+          assert_eq!(!no, yes, "!No should be Yes");
+          assert_eq!(!yes, no, "!Yes should be No");
 
-          bool.invert();
+          assert_eq!(yes & yes, yes, "Yes & Yes should be Yes");
+          assert_eq!(yes & no, no, "Yes & No should be No");
 
-          if !*bool {
-            panic!("invert call failed")
-          }
+          let mut val = yes;
+          val &= no;
+          assert_eq!(val, no, "&= logic failed");
+
+          assert_eq!(no | yes, yes, "No | Yes should be Yes");
+          assert_eq!(no | no, no, "No | No should be No");
+
+          let mut val = no;
+          val |= yes;
+          assert_eq!(val, yes, "|= logic failed");
+
+          assert_eq!(yes ^ no, yes, "Yes ^ No should be Yes");
+          assert_eq!(yes ^ yes, no, "Yes ^ Yes should be No");
+
+          let mut val = yes;
+          val ^= yes;
+          assert_eq!(val, no, "^= logic failed (toggle off)");
+
+          val ^= yes;
+          assert_eq!(val, yes, "^= logic failed (toggle on)");
         }
       )*
     }

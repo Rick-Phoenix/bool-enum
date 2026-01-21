@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2024"
 repository = "https://github.com/Rick-Phoenix/bool-enum"
 keywords = ["boolean", "enums"]
-description = "A proc macro that generates a Yes/No enum that dereferences to a boolean"
+description = "A macro for generating boolean-like enums that support bitwise and boolean operations"
 license = "Apache-2.0"
 
 readme = true
 
-[dependencies]
+[dev-dependencies]
 paste = "1"
