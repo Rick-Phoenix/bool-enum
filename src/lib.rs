@@ -161,7 +161,7 @@ macro_rules! bool_enum {
 
     impl ::core::fmt::Display for $ident {
       fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        write!(f, "{}", *self)
+        ::core::write!(f, "{}", *self)
       }
     }
   };
