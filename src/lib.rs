@@ -24,6 +24,8 @@ pub trait BooleanEnum:
   + BitOrAssign<Self>
   + BitXor<Output = Self>
   + BitXorAssign<Self>
+  + Send
+  + Sync
 {
   #[inline]
   fn as_bool(self) -> bool {
