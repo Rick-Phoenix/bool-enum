@@ -35,8 +35,9 @@ pub trait BooleanEnum:
 
 #[macro_export]
 macro_rules! bool_enum {
-  ($vis:vis $ident:ident) => {
+  ($vis:vis $ident:ident $(, doc = $doc:literal)?) => {
 
+    $(#[doc = $doc])?
     #[derive(::core::fmt::Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, ::core::hash::Hash)]
     #[repr(u8)]
     $vis enum $ident {
