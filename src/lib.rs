@@ -33,7 +33,6 @@ pub trait BooleanEnum:
   }
 }
 
-#[doc(hidden)]
 #[macro_export]
 macro_rules! bool_enum {
   ($vis:vis $ident:ident) => {
