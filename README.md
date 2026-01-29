@@ -1,6 +1,6 @@
-This crate exports the [`bool_enum`] macro for creating boolean-like enums, which implement the `Not` operator as well as the bitwise operators and Into/From `bool`. These can be useful for tracking boolean-like logic while maintaining more clarity and type safety across code boundaries.
+This crate exports the [`bool_enum`](crate::bool_enum) macro for creating boolean-like enums, which implement the [`Not`](core::ops::Not) operator as well as the bitwise operators and Into/From `bool`. These can be useful for tracking boolean-like logic while maintaining more clarity and type safety across code boundaries.
 
-It also exports the [`BooleanEnum`] trait for usage with generics.
+It also exports the [`BooleanEnum`](crate::BooleanEnum) trait for usage with generics.
 
 ## Usage
 

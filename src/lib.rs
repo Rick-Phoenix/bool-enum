@@ -6,6 +6,7 @@ use core::{
   ops::*,
 };
 
+/// Implements all of the bit operations for a boolean-like enum as well as conversions to/from `bool`.
 pub trait BooleanEnum:
   Into<bool>
   + From<bool>
@@ -33,6 +34,21 @@ pub trait BooleanEnum:
   }
 }
 
+/// Generates a boolean-like enum that implements [`BooleanEnum`].
+///
+/// The first argument is for the Visibility, which can be empty to signify a private enum.
+/// The second argument is the ident for the enum.
+/// The third (optional) argument is for the documentation.
+///
+/// # Example
+///
+/// ```
+/// use bool_enum::{bool_enum};
+///
+/// bool_enum!(NoVis);
+/// bool_enum!(pub(crate) PubCrate);
+/// bool_enum!(pub Public, doc = "Some documentation here...");
+/// ```
 #[macro_export]
 macro_rules! bool_enum {
   ($vis:vis $ident:ident $(, doc = $doc:literal)?) => {
