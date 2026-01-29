@@ -4,14 +4,14 @@ It also exports the [`BooleanEnum`] trait for usage with generics.
 
 ## Usage
 
-Call the macro with visibility (optional) and the ident of the enum to create.
+Call the macro with visibility (optional) and the ident of the enum to create, followed by an optional string for documentation.
 
 ```rust
 use bool_enum::{bool_enum};
 
 bool_enum!(NoVis);
 bool_enum!(pub(crate) PubCrate);
-bool_enum!(pub Public);
+bool_enum!(pub Public, doc = "Some documentation here...");
 
 fn main() {
     let yes = Public::Yes;
