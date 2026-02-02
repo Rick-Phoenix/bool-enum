@@ -36,7 +36,7 @@ pub trait BooleanEnum:
 
 /// Generates a boolean-like enum that implements [`BooleanEnum`].
 ///
-/// The first argument is for the Visibility, which can be empty to signify a private enum.
+/// The first argument is for the visibility, which can be empty to signify a private enum.
 /// The second argument is the ident for the enum.
 /// The third (optional) argument is for the documentation.
 ///
@@ -48,6 +48,41 @@ pub trait BooleanEnum:
 /// bool_enum!(NoVis);
 /// bool_enum!(pub(crate) PubCrate);
 /// bool_enum!(pub Public, doc = "Some documentation here...");
+///
+/// fn main() {
+///     let yes = Public::Yes;
+///     let no = Public::No;
+///
+///     if *no { panic!("Default/No should deref to false") }
+///     if !*yes { panic!("Yes should deref to true") }
+///
+///     assert_eq!(!no, yes, "!No should be Yes");
+///     assert_eq!(!yes, no, "!Yes should be No");
+///
+///     assert_eq!(yes & yes, yes, "Yes & Yes should be Yes");
+///     assert_eq!(yes & no, no, "Yes & No should be No");
+///
+///     let mut val = yes;
+///     val &= no;
+///     assert_eq!(val, no, "&= logic failed");
+///
+///     assert_eq!(no | yes, yes, "No | Yes should be Yes");
+///     assert_eq!(no | no, no, "No | No should be No");
+///
+///     let mut val = no;
+///     val |= yes;
+///     assert_eq!(val, yes, "|= logic failed");
+///
+///     assert_eq!(yes ^ no, yes, "Yes ^ No should be Yes");
+///     assert_eq!(yes ^ yes, no, "Yes ^ Yes should be No");
+///
+///     let mut val = yes;
+///     val ^= yes;
+///     assert_eq!(val, no, "^= logic failed (toggle off)");
+///
+///     val ^= yes;
+///     assert_eq!(val, yes, "^= logic failed (toggle on)");
+/// }
 /// ```
 #[macro_export]
 macro_rules! bool_enum {
